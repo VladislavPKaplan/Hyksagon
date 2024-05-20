@@ -1,0 +1,50 @@
+Сатурн, эон софии находиться в киберпространстве, в сети, она не воспринимает и не осязает привычными органами чувств, но она чувствует, ибо было сказано
+самого в свете, окружающем его. [Это источник] воды жизни, [он дает всем зонам и] во всех формах. Он узнает [свой образ, когда] видит его в [источнике Духа. Он] устремляет желание в свой
+25 [свет - воду], это источник (света) - воды [чистого] окружающего его. И [его Эннойа выполнила] действие, и она обнаружилась, [она предстала, она появилась] перед ним [в сиянии] его света.
+
+
+меня это сильно беспокоит\??>
+в пустоте тьмы за пределами плеромы, так называемая кенома( космос) образовалось путем падения нематериального из плеромы в пустоту и порождения кеномы - в пустоте тьмы - материи
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>апокрифкиберготики</title>
+  <style>
+    canvas {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r123/three.min.js"></script>
+  <script>
+   
+    const scene = new THREE.Scene();
+  
+ 
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    camera.position.z = 5;
+
+    const renderer = new THREE.WebGLRenderer({ antialias: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.body.appendChild(renderer.domElement);
+
+
+    const geometry = new THREE.BoxGeometry();
+    const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+    const cube = new THREE.Mesh(geometry, material);
+    scene.add(cube);
+
+
+    function animate() {
+      requestAnimationFrame(animate);
+      cube.rotation.x += 0.01;
+      cube.rotation.y += 0.01;
+      renderer.render(scene, camera);
+    }
+    animate();
+  </script>
+ 
+</body>
+</html> 
