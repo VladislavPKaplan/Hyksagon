@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кворум 4,</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            overflow: hidden;
+            position: relative;
+        }
+        h1 {
+            font-size: 48px;
+            color: #ff00ff; /* Малиновый */
+            text-transform: uppercase;
+        }
+        p {
+            font-size: 18px;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #00ffff; /* Голубой */
+            color: #000;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .button:hover {
+            background-color: #ff0000; /* Красный */
+        }
+        .triangle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-left: 200px solid transparent;
+            border-right: 200px solid transparent;
+            border-bottom: 400px solid #ff00ff;
+            animation: move 2s linear infinite, colorchange 1s linear infinite;
+            transform: translate(-50%, -50%);
+            opacity: 0.7;
+        }
+        @keyframes move {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+        @keyframes colorchange {
+            0% { border-bottom-color: #ff00ff; }
+            25% { border-bottom-color: #00ffff; }
+            50% { border-bottom-color: #ffff00; }
+            75% { border-bottom-color: #ff0000; }
+            100% { border-bottom-color: #ff00ff; }
+        }
+    </style>
+</head>
+<body>
+    <h1>Добро пожаловать в мир где то что внизу больше не подобно тому что вверху</h1>
+    <p>Поведаю я ныне о тайне циклов, что перемещаются движениями странными для конечного, ибо бесконечны они, запредельны знанию человека.</p>
+    <p>ъЬяАз</p>
+    <a href="indexnovaosnova.html" class="button">Увидеть то что нельзя описать и почувствоать, следовательно я рожден еслиХ чувстивуюЪ и мертв если перестал или утратил часть чувственных переживаний</a>
+    <div class="triangle"></div>
+    <script>
+        const textElements = document.querySelectorAll('h1, p, .button');
+        textElements.forEach(element => {
+            element.addEventListener('mouseover', () => {
+                const randomColor = Math.floor(Math.random()*16777215).toString(16); // Случайный цвет в формате HEX
+                element.style.color = '#' + randomColor;
+            });
+            element.addEventListener('mouseleave', () => {
+                element.style.color = ''; 
+            });
+        });
+    </script>
+</body>
+</html>

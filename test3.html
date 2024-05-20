@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Шизофреническая страница</title>
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #000;
+}
+
+.background-image {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.5); /* Масштабирование изображения */
+    animation: rotateBackground 20s linear infinite;
+}
+
+@keyframes rotateBackground {
+    0% {
+        transform: translate(-50%, -50%) scale(0.5) rotate(0deg); /* Изначальные параметры */
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(0.5) rotate(360deg); /* Поворот на 360 градусов */
+    }
+}
+
+.text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Arial', sans-serif;
+    font-size: 24px;
+    text-align: center;
+    animation: flicker 0.1s infinite alternate, shake 0.1s infinite alternate, colorChange 5s infinite;
+}
+
+@keyframes flicker {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0.8;
+    }
+}
+
+@keyframes shake {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    50% {
+        transform: translate(-52%, -52%) rotate(-2deg); /* Небольшое поворачивание влево */
+    }
+    100% {
+        transform: translate(-48%, -48%) rotate(2deg); /* Небольшое поворачивание вправо */
+    }
+}
+
+@keyframes colorChange {
+    0% {
+        color: #ff0000; /* Красный цвет */
+    }
+    50% {
+        color: #00ff00; /* Зеленый цвет */
+    }
+    100% {
+        color: #0000ff; /* Синий цвет */
+    }
+}
+
+/* Добавленный стиль для ссылки */
+a {
+    color: white;
+    text-decoration: none;
+}
+
+a:hover {
+    color: yellow;
+}
+</style>
+</head>
+<body>
+
+<img class="background-image" src="teststairs1.jpg" alt="">
+
+
+<div class="text">
+    <h1 style="font-family: 'Comic Sans MS', cursive; font-size: 48px;">Шизофреническая страница</h1>
+    <p>Здесь мог быть текст для манипуляции общественным мнением. Так получилось, что <a href="test4.html">принятие крещение</a> от монолитных сооружений пост-индустриальной криптоколонии действительно возможно.</p>
+</div>
+
+</body>
+</html>

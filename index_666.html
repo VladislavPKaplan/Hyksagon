@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Генератор абстрактных изображений</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 20px;
+    }
+    #canvas-container {
+      border: 1px solid #ccc;
+      width: 500px;
+      height: 500px;
+      position: relative;
+    }
+    #canvas {
+      width: 100%;
+      height: 100%;
+    }
+    #text-container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      font-size: 24px;
+      font-weight: bold;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      white-space: nowrap;
+      animation: shake 0.5s infinite alternate;
+    }
+    @keyframes shake {
+      from {
+        transform: translate(-50%, -50%) rotate(-2deg);
+      }
+      to {
+        transform: translate(-50%, -50%) rotate(2deg);
+      }
+    }
+    #controls {
+      margin-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+    }
+    #controls button {
+      margin: 5px;
+      padding: 5px 10px;
+      font-size: 16px;
+      font-family: sans-serif;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    #text-input {
+      margin: 5px;
+      padding: 5px 10px;
+      font-size: 16px;
+      font-family: sans-serif;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      width: 200px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Генератор абстрактных изображений</h1>
+  <div id="canvas-container">
+    <canvas id="canvas"></canvas>
+    <div id="text-container"></div>
+  </div>
+  <div id="controls">
+    <button id="generate-text">Сгенерировать текст</button>
+    <button id="clear-text">Очистить текст</button>
+    <button id="save-image">Сохранить изображение</button>
+    <input id="text-input" type="text" placeholder="Введите текст">
+  </div>
+  <script>
+    let canvas = document.getElementById("canvas");
+    let ctx = canvas.getContext("2d");
+    let textContainer = document.getElementById("text-container");
+    let shapes = [];
+    let backgroundGradient = ctx.createRadialGradient(canvas.width / 2, canvas.height / 2, 0, canvas.width / 2, canvas.height / 2, canvas.width / 2);
+    backgroundGradient.addColorStop(0, "#888");
+    backgroundGradient.addColorStop(1, "#444");
+    let frameCount = 0;
+
+    // Функция для генерации случайного числа в диапазоне
+    function randomInt(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    // Функция для создания случайного цвета
+    function randomColor() {
+      return '#' + Math.floor(Math.random() * 16777215).toString(16);
+    }
+
+    // Функция для создания случайной фигуры
+    function createShape() {
+      let shape = {
+        x: randomInt(0, canvas.width),
+        y: randomInt(0, canvas.height),
+        size: randomInt(10, 50),
+        color: randomColor(),
+        shapeType: randomInt(0, 2) // 0 - прямоугольник, 1 - круг
+      };
+      shapes.push(shape);
+    }
+
+    // Функция для отрисовки фигур на холсте
+    function drawShapes() {
+      shapes.forEach(shape => {
+        ctx.fillStyle = shape.color;
+        if (shape.shapeType === 0) {
+          ctx.fillRect(shape.x, shape.y, shape.size, shape.size);
+        } else {
+          ctx.beginPath();
+          ctx.arc(shape.x, shape.y, shape.size, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      });
+    }
+
+    // Функция для создания эффекта размытия
+    function blurEffect() {
+      ctx.fillStyle = "rgba(0, 0, 0, 0.1)";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+    }
+
+    // Функция для генерации текста
+    function generateText() {
+      let texts = ["Абстракция", "Креатив", "Инновации", "Вдохновение"];
+      let text = texts[randomInt(0, texts.length - 1)];
+      textContainer.innerText = text;
+      // Дополнение: Генерация абстрактного текста с анимацией тряски и переливания цветов
+      textContainer.style.animation = "shake 0.5s infinite alternate"; // добавляем анимацию тряски
+      let colors = ['#ff0000', '#00ff00', '#0000ff']; // список цветов для переливания
+      let colorIndex = 0;
+      setInterval(() => {
+        textContainer.style.color = colors[colorIndex];
+        colorIndex = (colorIndex + 1) % colors.length;
+      }, 500); // переливание цветов каждые 500 миллисекунд
+    }
+
+    // Функция для анимации и обновления фигур и текста
+    function animate() {
+      ctx.fillStyle = backgroundGradient;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      blurEffect();
+      frameCount++;
+      if (frameCount % 10 === 0) { // Уменьшаем скорость генерации фигур
+        createShape();
+      }
+      drawShapes();
+      generateText();
+      requestAnimationFrame(animate);
+    }
+
+    // Запустить анимацию
+    animate();
+
+    // Обработчик события для кнопки генерации текста
+    document.getElementById("generate-text").addEventListener("click", generateText);
+  </script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>prosizzchiyyetrans</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background-color: black;
+        color: white;
+        font-family: Arial, sans-serif;
+        overflow: hidden;
+    }
+    .container {
+        position: relative;
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    video.background-video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        min-width: 100%;
+        min-height: 100%;
+        z-index: -1;
+    }
+    .content {
+        text-align: center;
+        z-index: 1;
+        max-width: 70%;
+        margin: auto;
+    }
+    .text-block {
+        padding: 20px;
+        background-color: rgba(0, 0, 0, 0.5);
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        word-wrap: break-word;
+        cursor: pointer; /* Добавляем курсор руки для указания, что текст кликабелен */
+    }
+</style>
+</head>
+<body>
+<video autoplay loop muted class="background-video">
+    <source src="nevixyyy.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
+<div class="container">
+    <div class="content">
+        <div class="text-block" onclick="blinkAndRedirect()"> <!-- Добавляем onclick событие, чтобы вызывать функцию при клике -->
+            <h2>ESIBIRAI MEL DESIDFRACAS ACCEP</h2>
+            <p>
+                Он привлекал к себе людей обоего пола своим нечестивым нравом. . 1271 Гальдуоны. Ральф. Венцеслав.
+                На следующий день после Вознесения Господня Бог явил свою великую и чудесную прозорливость в гонении за католическую веру и святую католическую церковь. В этом гонении многие знатные и незнатные были увенчаны мученичеством.
+                Здесь начинается книга Бытия, которая говорит о творении, эти [слова] Иовину, [и] евреи [читают] этот закон пятикнижия
+                
+                laminulatam linguam de choroferonone peracta ad morum aurbo; acedeam P perilolium oppr core oburea, nox; mea kaxatab parvit, quhecal ferium I bex opusquam fugallatione noua pincerci ohoere, talanqueni q flumin babari oi camgo sufflimetad finm me puliporome tab flauolo oj fieri eq poltim. necupur alteru albam panoam foan.
+            </p>
+            <!-- Additional text can be added here -->
+        </div>
+    </div>
+</div>
+
+<script>
+    function blinkAndRedirect() {
+        var textBlock = document.querySelector('.text-block');
+        var colors = ['#ff0000', '#00ff00', '#0000ff']; // Массив цветов, которыми будет мигать текст
+        var counter = 0;
+        var blinkInterval = setInterval(function() {
+            textBlock.style.color = colors[counter % colors.length];
+            counter++;
+            if (counter === 6) { // Меняем число 6 на количество миганий, которые вы хотите выполнить перед перенаправлением
+                clearInterval(blinkInterval);
+                window.location.href = 'index_444.html'; // Замените URL на ваш
+            }
+        }, 300); // Интервал мигания в миллисекундах
+    }
+</script>
+
+</body>
+</html>

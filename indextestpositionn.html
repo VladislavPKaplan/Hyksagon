@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Влад потерял связь времени</title>
+  <link rel="stylesheet" href="https://revealjs.com/css/reveal.css">
+  <link rel="stylesheet" href="https://revealjs.com/css/theme/black.css">
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <style>
+    body {
+      background: #000;
+      color: #00ff00;
+      font-family: 'Courier New', Courier, monospace;
+      overflow: auto;
+    }
+    .content {
+      position: relative;
+      z-index: 2;
+      padding: 20px;
+    }
+    .download-button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+    .download-button:hover {
+      background-color: #45a049;
+    }
+    @keyframes changeColor {
+      0% { color: red; }
+      25% { color: blue; }
+      50% { color: green; }
+      75% { color: orange; }
+      100% { color: purple; }
+    }
+    a {
+      animation: changeColor 2s infinite;
+    }
+    .link {
+      position: fixed;
+      top: 20px;
+      right: 50%;
+      transform: translateX(50%);
+      font-size: 24px;
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 3;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+    .modal-content {
+      position: relative;
+      background-color: #1a1a1a;
+      color: #00ff00;
+      margin: 15% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+    }
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+    .close:hover,
+    .close:focus {
+      color: white;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .image-container {
+      position: relative;
+      width: 450px;
+      height: 423px;
+    }
+    .image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    @keyframes moveRectangle {
+      0% { top: 10%; left: 10%; }
+      25% { top: 10%; left: 80%; }
+      50% { top: 80%; left: 80%; }
+      75% { top: 80%; left: 10%; }
+      100% { top: 10%; left: 10%; }
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+    .rectangle {
+      position: fixed;
+      width: 100px;
+      height: 50px;
+      background-color: #00ff00;
+      animation: moveRectangle 5s infinite, blink 1s infinite;
+      z-index: 1;
+    }
+    .background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, #ff0066, #3300ff);
+      background-size: 400% 400%;
+      animation: gradient 15s ease infinite;
+      z-index: 0;
+    }
+    @keyframes gradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .triangle-container {
+      position: relative;
+      width: 0;
+      height: 0;
+      margin: 40px auto;
+      transform: rotate(0deg);
+      animation: rotateTriangle 20s linear infinite;
+    }
+    @keyframes rotateTriangle {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    .triangle {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-left: 200px solid transparent;
+      border-right: 200px solid transparent;
+      border-bottom: 346px solid rgba(26, 26, 26, 0.8);
+      animation: colorShift 10s ease infinite;
+    }
+    @keyframes colorShift {
+      0% { border-bottom-color: #ff0066; }
+      25% { border-bottom-color: #3300ff; }
+      50% { border-bottom-color: #00ff00; }
+      75% { border-bottom-color: #ff9900; }
+      100% { border-bottom-color: #ff0066; }
+    }
+    .triangle-content {
+      position: absolute;
+      top: 50px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 350px;
+      height: 200px;
+      overflow-y: auto;
+      color: #00ff00;
+    }
+    .triangle-content p {
+      margin: 0;
+      padding: 10px;
+      font-size: 14px;
+    }
+    /* New Styles for Satanic Symbol */
+    .pentagram {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      width: 200px;
+      height: 200px;
+      transform: translate(-50%, -50%) rotate(0deg);
+      animation: rotatePentagram 10s linear infinite;
+    }
+    @keyframes rotatePentagram {
+      0% { transform: translate(-50%, -50%) rotate(0deg); }
+      100% { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+    .pentagram path {
+      stroke: #ff0000;
+      stroke-width: 2;
+      fill: transparent;
+      animation: drawPentagram 5s ease infinite alternate;
+    }
+    @keyframes drawPentagram {
+      0% { stroke-dasharray: 0, 100; }
+      100% { stroke-dasharray: 100, 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="background"></div>
+  <div class="rectangle"></div>
+  <div class="content">
+    <center>
+      <h1>Проект гексагон - проектные мастерские</h1>
+      <h4>В настоящее время имеется более 400 исследовательских работ, а также около 5000 страниц лабораторных записей, которые рисуют полностью последовательную картину экологических и биологических преобразований этой планеты.</h4>
+    </center>
+    <button id="openModal" class="download-button">первопричина</button>
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <span class="close" id="closeModal">&times;</span>
+        <p><div id="blinkingText">Пронизана испорченным кодом и искаженными данными...</div></p>
+      </div>
+    </div>
+    <ul>
+      <li><a href="https://rense.com/general69/microbe.htm">По подобию да будет</a></li>
+      <li><a href="index_2.html">Страница 2</a></li>
+      <li><a href="noviu.html">убийства арахнидов</a></li>
+    </ul>
+    <a href="index_3.html" class="link">Oratio sine salutatione et cum flectamus genua</a>
+    <a href="index_2.html">Эрнест Хемингуэй был преследован ФБР в течение длительного времени. В 1940-х годах агенты ФБР начали вести надзор за писателем из-за его связей с коммунистическими и левыми организациями. В 1950 году Хемингуэй был даже предупрежден агентами ФБР о том, что его собственные телефонные разговоры могут быть подслушиваемыми.</a>
+    <div class="image-container">
+      <img src="gjkjva.jpg" class="image" alt="Image">
+      <p class="text">Когда же оружие притупится и острия обломаются...</p>
+    </div>
+    <img src="dilie.png" width="450" alt="Image">
+    <img src="OIG.Gkd.jpg" width="750" alt="Image">
+    <p class="text">Как упал ты с неба, Денница, сын зари! разбился о землю, попиравший народы...</p>
+
+    <div class="triangle-container">
+      <div class="triangle">
+        <div class="triangle-content">
+          <p>Никто не узнает того, что знаю я.
+            Никто не узнает того, чему научился я.
+            Если только они не следуют по Пути и не желают получить образование.
+            Я желаю только простого разговора.
+            Чтобы увидеть, что находится за его пределами.
+            
+            
+            отчего это смеялась Сара, сказав: "неужели я действительно рожу, ведь я состарилась"? (14) Есть ли что недостижимое для Г-спода? к тому сроку возвращусь к тебе в следующем году — и у Сары сын.
+            
+            Трансгуманистическая этика по толкованию танаха, мы избираемые богами (по: Потом Мы сказали ангелам: «Падите ниц перед Адамом!» Они пали ниц, и только Иблис (сатана) не был в числе поклонившихся) отвергаем богов, бог представляется во множественном числе, ходит по райскому саду, принимают пищу вместе с Адамом. Вероятно, иудеи не знали о существовании теоса абсолюта греческой мифологии, однако  мало вероятно, Иегова боролся за права над народами, ибо ЯХВЕ ЭЛОХИМ ваш есть высший из Элохимов. Эль. Великий. Сильный и страшный.
+            В книге судей ХАМОС вероятнее всего из пантеона языческих богов выступает в качестве очевидного примера многобожия. 
+            
+            Есть ли у дождя отец? или кто рождает капли росы? Из чьего чрева выходит лед, и иней небесный, – кто рождает его? Воды, как камень, крепнут, и поверхность бездны замерзает. Можешь ли ты связать узел Хима и разрешить узы Кесиль? Можешь ли выводить созвездия в свое время и вести Ас с ее детьми? Знаешь ли ты уставы неба, можешь ли установить господство его на земле? Можешь ли возвысить голос твой к облакам, чтобы вода в оби
+            лии покрыла тебя?</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add the pentagram SVG element -->
+  <div class="pentagram">
+    <svg viewBox="0 0 100 100">
+      <path d="M50 15 L61.8 35 L85 35 L68.2 50 L75 75 L50 60 L25 75 L31.8 50 L15 35 L38.2 35 Z"></path>
+    </svg>
+  </div>
+
+  <script>
+    var modal = document.getElementById('myModal');
+    var btn = document.getElementById("openModal");
+    var span = document.getElementById("closeModal");
+
+    btn.onclick = function() {
+      modal.style.display = "block";
+    }
+    span.onclick = function() {
+      modal.style.display = "none";
+    }
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+    window.onload = function() {
+      var blink = 0;
+      setInterval(function() {
+        document.getElementById("blinkingText").style.visibility = blink % 2 == 0 ? "hidden" : "visible";
+        blink++;
+      }, 500);
+    }
+    var modal = document.getElementById('myModal');
+    var btn = document.getElementById("openModal");
+    var span = document.getElementById("closeModal");
+
+    btn.onclick = function() {
+      modal.style.display = "block";
+    }
+    span.onclick = function() {
+      modal.style.display = "none";
+    }
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+    window.onload = function() {
+      var blink = 0;
+      setInterval(function() {
+        document.getElementById("blinkingText").style.visibility = blink % 2 == 0 ? "hidden" : "visible";
+        blink++;
+      }, 500);
+
+      // Move images randomly
+      var images = document.querySelectorAll('.image');
+      images.forEach(function(img) {
+        moveImage(img);
+      });
+    }
+
+    function moveImage(img) {
+      var maxX = window.innerWidth - img.clientWidth;
+      var maxY = window.innerHeight - img.clientHeight;
+      var newX = Math.floor(Math.random() * maxX);
+      var newY = Math.floor(Math.random() * maxY);
+
+      img.style.left = newX + 'px';
+      img.style.top = newY + 'px';
+
+      setTimeout(function() {
+        moveImage(img);
+      }, Math.random() * 5000 + 2000); // Randomize movement interval between 2 to 7 seconds
+    }
+  </script>
+  
+</body>
+</html>

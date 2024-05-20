@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>главное</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive;
+            background-color: #000;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            overflow-x: hidden;
+        }
+
+        header {
+            background-color: #1f1f1f;
+            padding: 20px;
+            transform: skewY(-5deg); /* Гравитационное искажение */
+        }
+
+        h1 {
+            font-size: 4em;
+            margin-bottom: 20px;
+            color: #ff00ff;
+            text-shadow: 2px 2px 4px #000; /* Неожиданный текстовый эффект */
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 1.2em;
+            transition: transform 0.5s ease; /* Неожиданные анимации */
+        }
+
+        nav a:hover {
+            transform: rotate(360deg); /* Неожиданные анимации */
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 50vh;
+            padding: 0 20px;
+        }
+
+        .content {
+            flex: 1;
+            line-height: 1.6;
+            font-size: 1.5em;
+            max-width: 600px;
+        }
+
+        .button-container {
+            text-align: center;
+        }
+
+        .button {
+            background-color: #ff4500;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1.5em;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: all 0.5s ease; /* Неожиданные анимации */
+        }
+
+        .button:hover {
+            background-color: #ff6347;
+            transform: scale(1.1) rotate(180deg); /* Неожиданные анимации */
+        }
+
+        .photo-container {
+            margin: 40px 0;
+        }
+
+        .photo {
+            border-radius: 50%;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+            transition: transform 0.5s ease;
+        }
+
+        .photo:hover {
+            transform: scale(1.1) rotate(10deg); /* Неожиданные анимации */
+        }
+
+        footer {
+            background-color: #1f1f1f;
+            padding: 20px;
+            width: 100%;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        .articles {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 50px;
+        }
+
+        .article {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            max-width: 300px;
+            flex: 1;
+        }
+
+        .article img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .article-content {
+            text-align: left;
+        }
+
+        .article-content h2 {
+            color: #ff00ff;
+            animation: blink 1s infinite alternate; /* Добавляем анимацию мигания */
+        }
+
+        .article-content p {
+            color: #ccc;
+        }
+
+        @keyframes blink {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
+
+        .triangle-container {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            margin: 50px 0;
+            perspective: 500px;
+            overflow: hidden;
+        }
+
+        .triangle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 200px;
+            height: 200px;
+            background-color: rgba(255, 0, 255, 0.7);
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+            transform-origin: center;
+            animation: rotateTriangle 10s linear infinite;
+        }
+
+        .ray {
+            position: absolute;
+            width: 2px;
+            height: 100px;
+            background-color: rgba(255, 255, 255, 0.7);
+            top: -100px;
+            left: calc(50% - 1px);
+            transform-origin: bottom center;
+            animation: flicker 1s ease-in-out infinite alternate;
+        }
+
+        .ray:nth-child(2) {
+            transform: rotate(10deg);
+            animation-delay: 0.1s;
+        }
+
+        .ray:nth-child(3) {
+            transform: rotate(20deg);
+            animation-delay: 0.2s;
+        }
+
+        .ray:nth-child(4) {
+            transform: rotate(30deg);
+            animation-delay: 0.3s;
+        }
+
+        .ray:nth-child(5) {
+            transform: rotate(40deg);
+            animation-delay: 0.4s;
+        }
+
+        @keyframes rotateTriangle {
+            from {
+                transform: translate(-50%, -50%) rotateX(0deg) rotateY(0deg);
+            }
+            to {
+                transform: translate(-50%, -50%) rotateX(360deg) rotateY(360deg);
+            }
+        }
+
+        @keyframes flicker {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>С РОЖДЕСТВОМ Христовым, потребитель</h1>
+        <nav>
+            <a href="test.html">Дополнительно о событиях</a>
+         
+        </nav>
+    </header>
+
+    <section class="container">
+        <div
+        <div class="content">
+            <p>Человек становится просветленным, не воображая световые фигуры, а делая тьму осознательной. Однако последняя процедура неприятна, и поэтому непопулярна.</p>
+        </div>
+        <div class="button-container">
+            <button class="button" id="redirectButton">,?//неu0 нажимай</button>
+        </div>
+    </section>
+    <div class="triangle-container">
+        <div class="triangle"></div>
+        <div class="ray"></div>
+        <div class="ray"></div>
+        <div class="ray"></div>
+        <div class="ray"></div>
+        <div class="ray"></div>
+    </div>
+
+    <section class="photo-container">
+        <a href="ne.html">
+          <img src="photo1716033742.jpeg" class="photo" width="200">
+        </a>
+      </section>
+    
+    <div class="articles">
+        <div class="article">
+            <img src="mitraatis.jpeg" alt="Изображение статьи 1">
+            <div class="article-content">
+                <h2>Что же это значит,???</h2>
+                <p>Митра-Атис оскопил самого себя, впав в безумии и умер от кровопотери, а рождество/новыйгод - обрезание иисуса,отождествление с внутренним очагом(как у пифувJMKJагорийцев_ тоестьпервородная монада)</p>
+            </div>
+        </div>
+
+        <div class="article">
+            <img src="bojiychelovek.jpeg" alt="Изображение статьи 2">
+            <div class="article-content">
+                <h2>Механические эльфы и солярные символы на древних плитах</h2>
+                <p>Вероятно что свастика была взаимствована у италийцев - римлян германскими племенами что опустошали гробницы и осматривали возведенные орнаменты. Монада пифагорейских времен была божественным, совершенным, абсолютным числом. Волк же и вообще звуки животных стали богами (духами) в Ветхом Завете и стали злобными, враждебными людям.</p>
+            </div>
+        </div>
+
+        <div class="article">
+            <img src="onisotvorili.jpeg" alt="Изображение статьи 3">
+            <div class="article-content">
+                <h2>Заголовок статьи 3</h2>
+                <p>ОНИ СОТВОРИЛИ ФИЗИЧЕСКИЙ МИР ЗАДОЛГО ДО ВОЗНИКНОВЕНИЯ ЧЕЛОВЕКА, И ОНИ СДЕЛАЛИ ЕГО ПОДОБНЫМ СВОЕЙ НЕСОВЕРШЕННОЙ ПРИРОДЕ</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2024 Славься тартария Все права защищены.</p>
+    </footer>
+
+    
+    <script>
+        document.getElementById('redirectButton').addEventListener('click', function() {
+            window.location.href = 'index.html';
+        });
+    </script>
+</body>
+</html>

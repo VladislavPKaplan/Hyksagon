@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>к</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+    }
+
+    canvas {
+      display: block;
+    }
+    
+    .matrix-text {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 20px;
+      color: #00FF00;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="matrix-text" id="matrixText"></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r123/three.min.js"></script>
+  <script>
+    // Создаем сцену
+    const scene = new THREE.Scene();
+
+    // Создаем камеру
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    camera.position.z = 5;
+
+    // Создаем рендерер
+    const renderer = new THREE.WebGLRenderer({ antialias: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.body.appendChild(renderer.domElement);
+
+    // Создаем вершины остроугольного треугольника
+    const vertex1 = new THREE.Vector3(-2, -1, 0);
+    const vertex2 = new THREE.Vector3(2, -1, 0);
+    const vertex3 = new THREE.Vector3(0, 2, 0);
+
+    // Находим точки, делящие стороны треугольника на равные отрезки
+    const midpoint12 = new THREE.Vector3().addVectors(vertex1, vertex2).multiplyScalar(0.5);
+    const midpoint23 = new THREE.Vector3().addVectors(vertex2, vertex3).multiplyScalar(0.5);
+    const midpoint31 = new THREE.Vector3().addVectors(vertex3, vertex1).multiplyScalar(0.5);
+
+    // Создаем треугольники по этим точкам
+    const triangleGeometry1 = new THREE.BufferGeometry().setFromPoints([vertex1, midpoint12, midpoint31]);
+    const triangleMaterial1 = new THREE.MeshBasicMaterial({ color: 0xff0000, side: THREE.DoubleSide, transparent: true, opacity: 0.5 });
+    const triangle1 = new THREE.Mesh(triangleGeometry1, triangleMaterial1);
+    scene.add(triangle1);
+
+    const triangleGeometry2 = new THREE.BufferGeometry().setFromPoints([vertex2, midpoint12, midpoint23]);
+    const triangleMaterial2 = new THREE.MeshBasicMaterial({ color: 0x00ff00, side: THREE.DoubleSide, transparent: true, opacity: 0.5 });
+    const triangle2 = new THREE.Mesh(triangleGeometry2, triangleMaterial2);
+    scene.add(triangle2);
+
+    const triangleGeometry3 = new THREE.BufferGeometry().setFromPoints([vertex3, midpoint23, midpoint31]);
+    const triangleMaterial3 = new THREE.MeshBasicMaterial({ color: 0x0000ff, side: THREE.DoubleSide, transparent: true, opacity: 0.5 });
+    const triangle3 = new THREE.Mesh(triangleGeometry3, triangleMaterial3);
+    scene.add(triangle3);
+
+    function animate() {
+      requestAnimationFrame(animate);
+      // Вращение треугольников
+      triangle1.rotation.x += 0.01;
+      triangle1.rotation.y += 0.01;
+      triangle2.rotation.x += 0.01;
+      triangle2.rotation.y += 0.01;
+      triangle3.rotation.x += 0.01;
+      triangle3.rotation.y += 0.01;
+      renderer.render(scene, camera);
+    }
+    animate();
+
+    // Текст для анимации печатной машинки
+    const text = "5 миллиардов человек погибнет в 1997 году. Выдержки из беседы с параноидальным шизофреником Апрель 12 1990 окружная больница Балтимора";
+    let index = 0;
+
+    function animateText() {
+      if (index < text.length) {
+        document.getElementById("matrixText").innerText += text.charAt(index);
+        index++;
+        setTimeout(animateText, 50); // скорость анимации
+      }
+    }
+
+    animateText();
+  </script>
+</body>
+
+</html>
