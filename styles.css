@@ -1,0 +1,122 @@
+css
+.text-container {
+    position: relative;
+  }
+  
+  .foreground-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2; /* Помещаем основной текст поверх остальных элементов */
+  }
+  
+  .background-text {
+    animation: blink 1s infinite alternate, color-change 3s infinite; /* Анимация мигания и изменения цвета фона текста /
+    z-index: 1; / Помещаем фоновый текст ниже основного текста */
+  }
+  
+  @keyframes blink {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+  
+  @keyframes color-change {
+    0% {
+      color: red;
+    }
+    25% {
+      color: blue;
+    }
+    50% {
+      color: green;
+    }
+    75% {
+      color: yellow;
+    }
+    100% {
+      color: red;
+    }
+  }
+  
+.popup {
+  position: fixed;
+  top: 50px;
+  left: 50%; /* располагаем по центру */
+  transform: translateX(-50%);
+  background-color: #361d7e;
+  padding: 10px;
+  border: 1px solid #0cf565;
+}
+.popup a {
+  text-decoration: none;
+  color: #14b436;
+}
+
+
+container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border: 2px solid rgb(160, 10, 10);
+}
+
+.container img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%; /* Замените это значение на желаемую ширину изображения */
+  border: 2px solid rgb(0, 136, 113)
+
+  .triangle {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 200px 200px 0;
+    border-color: #000 transparent transparent;
+    position: relative;
+  }
+  
+  .hamilton-triangle {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 100px 100px 0;
+    border-color: #f00 transparent transparent;
+    position: absolute;
+  }
+  
+  .hamilton-triangle:nth-child(1) {
+    border-top-color: #f00;
+    top: 0;
+    left: 0;
+  }
+  
+  .hamilton-triangle:nth-child(2) {
+    border-top-color: #0f0;
+    top: 0;
+    left: 100px;
+    transform: rotate(60deg);
+  }
+  
+  .hamilton-triangle:nth-child(3) {
+    border-top-color: #00f;
+    top: -100px;
+    left: 50px;
+    transform: rotate(-60deg);
+  }
+  
+  .euler-circle {
+    width: 200px;
+    height: 200px;
+    background-color: transparent;
+    border: 2px solid #000;
+    border-radius: 50%;
+    position: absolute;
+    top: 100px;
+    left: 100px;
+  }
+  
